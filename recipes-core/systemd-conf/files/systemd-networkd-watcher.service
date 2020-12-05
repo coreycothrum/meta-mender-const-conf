@@ -1,0 +1,10 @@
+[Unit]
+Description=Update systemd-networkd on Change
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=@@base_bindir@@/systemctl restart systemd-networkd.service
+
+[Install]
+WantedBy=multi-user.target

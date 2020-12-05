@@ -1,0 +1,9 @@
+#https://www.freedesktop.org/software/systemd/man/systemd.network.html
+
+[Match]
+Name=*
+KernelCommandLine=!nfsroot
+
+[Link]
+Unmanaged=yes
+RequiredForOnline=no

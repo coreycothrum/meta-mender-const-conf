@@ -1,0 +1,6 @@
+[Path]
+PathModified=@@MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR@@
+MakeDirectory=True
+
+[Install]
+WantedBy=multi-user.target
