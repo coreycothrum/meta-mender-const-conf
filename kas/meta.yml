@@ -1,0 +1,5 @@
+header:
+  version : 1
+
+repos:
+  meta-mender-const-conf:

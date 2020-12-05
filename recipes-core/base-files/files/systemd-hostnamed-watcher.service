@@ -1,0 +1,10 @@
+[Unit]
+Description=Update systemd-hostnamed on Change
+Requires=systemd-hostnamed.service
+
+[Service]
+Type=oneshot
+ExecStart=@@base_bindir@@/sh -c '@@bindir@@/hostnamectl set-hostname $(@@base_bindir@@/cat @@sysconfdir@@/hostname)'
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+header:
+  version : 1
+  includes:
+    - meta.yml
+
+local_conf_header:
+  00_meta-mender-const-conf: |
+    require conf/include/mender-const-conf.inc
