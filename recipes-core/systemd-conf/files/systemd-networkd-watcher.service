@@ -1,6 +1,6 @@
 [Unit]
 Description=Update systemd-networkd on Change
-After=network.target
+Requires=systemd-networkd.service
 
 [Service]
 Type=oneshot
