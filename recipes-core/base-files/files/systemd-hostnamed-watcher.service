@@ -1,5 +1,5 @@
 [Unit]
-Description=Update systemd-hostnamed on Change
+Description=update hostname from /data
 Requires=systemd-hostnamed.service
 
 [Service]

@@ -1,5 +1,5 @@
 [Unit]
-Description=Update systemd-networkd on Change
+Description=update systemd-networkd from /data
 Requires=systemd-networkd.service
 
 [Service]
