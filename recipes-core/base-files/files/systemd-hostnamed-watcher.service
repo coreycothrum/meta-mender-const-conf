@@ -6,5 +6,8 @@ Requires=systemd-hostnamed.service
 Type=oneshot
 ExecStart=@@base_bindir@@/sh -c '@@bindir@@/hostnamectl set-hostname $(@@base_bindir@@/cat @@sysconfdir@@/hostname)'
 
+Restart=on-failure
+RestartSec=5
+
 [Install]
 WantedBy=multi-user.target
