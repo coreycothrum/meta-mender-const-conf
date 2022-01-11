@@ -4,6 +4,7 @@ Requires=systemd-networkd.service
 
 [Service]
 Type=oneshot
+ExecStartPre=-@@base_bindir@@/mount -o remount @@sysconfdir@@/systemd/network
 ExecStart=@@base_bindir@@/systemctl restart systemd-networkd.service
 
 [Install]
