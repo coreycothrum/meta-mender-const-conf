@@ -14,12 +14,14 @@ This is mostly symlinking stuff into the ``/data`` partition.
 * ``read-only-rootfs`` is enabled by default. There is no good reason not to use it.
 
 ### systemd-hostnamed
-``/etc/hostname`` is symlinked into the ``/data`` partition.
+``/etc/hostname`` is symlinked to ``MENDER/CONST_CONF_HOSTNAME_CONF_DATA_DIR``.
 
 When the new hostname file changes, ``systemd-hostnamed-watcher.service`` applies the hostname via ``hostnamectl``.
 
 ### systemd-networkd
-All [systemd.netowrk](https://www.freedesktop.org/software/systemd/man/systemd.network.html) files (\*.network) are installed into the ``/data`` partition. Symlinks are created so that ``systemd-networkd`` finds them.
+All [systemd.netowrk](https://www.freedesktop.org/software/systemd/man/systemd.network.html) files (\*.network) are installed into ``MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR`` (``/data`` partition).
+
+This directory is mounted/merged (overlayfs) at ``/etc/systemd/network``, allowing dynamic and persistent network changes with a read-only filesystem.
 
 When one of the systemd.network files change, ``systemd-networkd-watcher.service`` restarts ``systemd-networkd`` via ``systemctl`` to apply changes.
 
@@ -32,6 +34,8 @@ To add custom systemd.network files, append ``systemd-conf_%.bbappend`` to exten
     ${WORKDIR}/network/${MACHINE}/*.network
 
 Any found will be added automatically.
+
+Otherwise dynamically create files at runtime.
 
 ## Dependencies
 This layer depends on:

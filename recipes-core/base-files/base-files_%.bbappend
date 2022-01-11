@@ -11,6 +11,13 @@ FILES_${PN}    += "                                                         \
                   "
 
 do_install_append() {
+  echo "overlay \
+${sysconfdir}/systemd/network overlay defaults,nofail,lowerdir=${MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR}:\
+${sysconfdir}/systemd/network,\
+x-systemd.requires=${MENDER_DATA_PART_MOUNT_LOCATION},x-systemd.requires=/ \
+0 0" \
+>> ${D}${sysconfdir}/fstab
+
   install -d                                                ${D}${systemd_unitdir}/system/systemd-hostnamed.service.d/
   install -m 0644 ${WORKDIR}/systemd-hostnamed.service.conf ${D}${systemd_unitdir}/system/systemd-hostnamed.service.d/
 
