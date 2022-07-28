@@ -28,7 +28,7 @@ When one of the systemd.network files change, ``systemd-networkd-watcher.service
 #### Install Custom Network Device Configuration
 This layer only installs ``zdefault.network``, a catchall that sets the interface to unmanaged. This is so unused interfaces do not cause systemd to report failed services.
 
-To add custom systemd.network files, append ``systemd-conf_%.bbappend`` to extend ``FILESEXTRAPATHS_prepend``. They are expected to be located at:
+To add custom systemd.network files, append ``systemd-conf_%.bbappend`` to extend ``FILESEXTRAPATHS:prepend``. They are expected to be located at:
 
     ${WORKDIR}/network/*.network
     ${WORKDIR}/network/${MACHINE}/*.network

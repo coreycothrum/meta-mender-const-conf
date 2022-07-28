@@ -7,20 +7,20 @@ inherit systemd
 inherit bitbake-variable-substitution
 
 SYSTEMD_AUTO_ENABLE    = "enable"
-SYSTEMD_SERVICE_${PN} += "systemd-hostnamed-watcher.service"
-SYSTEMD_SERVICE_${PN} += "systemd-hostnamed-watcher.path"
+SYSTEMD_SERVICE:${PN} += "systemd-hostnamed-watcher.service"
+SYSTEMD_SERVICE:${PN} += "systemd-hostnamed-watcher.path"
 
 SRC_URI               += "                                                             \
                            file://systemd-hostnamed-watcher.service                    \
                            file://systemd-hostnamed-watcher.path                       \
                          "
-FILES_${PN}            = "                                                             \
+FILES:${PN}            = "                                                             \
                            ${systemd_unitdir}/system/systemd-hostnamed-watcher.service \
                            ${systemd_unitdir}/system/systemd-hostnamed-watcher.path    \
                          "
-RDEPENDS_${PN}         = "coreutils"
+RDEPENDS:${PN}         = "coreutils"
 
-do_install_append() {
+do_install:append() {
     install -d                                                   ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/systemd-hostnamed-watcher.service ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/systemd-hostnamed-watcher.path    ${D}${systemd_unitdir}/system

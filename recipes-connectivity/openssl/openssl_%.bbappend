@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI     += "                                              \
                  file://95-sslgenkeys.preset                  \
@@ -6,7 +6,7 @@ SRC_URI     += "                                              \
                  file://sslgenkeys.sh                         \
                  file://ssldelkeys.sh                         \
                "
-FILES_${PN} += "                                              \
+FILES:${PN} += "                                              \
                  ${systemd_unitdir}/system-preset/*           \
                  ${systemd_unitdir}/system/sslgenkeys.service \
                  ${sbindir}/sslgenkeys.sh                     \
@@ -15,7 +15,7 @@ FILES_${PN} += "                                              \
 
 inherit bitbake-variable-substitution-helpers
 
-do_install_append() {
+do_install:append() {
     install -d                                     ${D}${systemd_unitdir}/system-preset/
     install -m 644 ${WORKDIR}/95-sslgenkeys.preset ${D}${systemd_unitdir}/system-preset/
 

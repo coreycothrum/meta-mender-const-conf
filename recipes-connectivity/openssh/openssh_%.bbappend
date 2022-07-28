@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SYSTEMD_AUTO_ENABLE = "enable"
 
@@ -6,14 +6,14 @@ SRC_URI     += "                                                   \
                  file://sshddelkeys.sh                             \
                  file://sshdgenkeys.service.conf                   \
                "
-FILES_${PN} += "                                                   \
+FILES:${PN} += "                                                   \
                  ${sbindir}/sshddelkeys.sh                         \
                  ${systemd_unitdir}/system/sshdgenkeys.service.d/* \
                "
 
 inherit bitbake-variable-substitution-helpers
 
-do_install_append() {
+do_install:append() {
     install -d                                          ${D}${sbindir}/
     install -m 0755 ${WORKDIR}/sshddelkeys.sh           ${D}${sbindir}/
 

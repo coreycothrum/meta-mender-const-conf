@@ -1,1 +1,1 @@
-PACKAGECONFIG_append += "networkd resolved hostnamed"
+PACKAGECONFIG:append = " networkd resolved hostnamed"

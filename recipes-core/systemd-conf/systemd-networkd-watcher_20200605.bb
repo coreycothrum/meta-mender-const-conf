@@ -7,18 +7,18 @@ inherit systemd
 inherit bitbake-variable-substitution
 
 SYSTEMD_AUTO_ENABLE    = "enable"
-SYSTEMD_SERVICE_${PN} += "systemd-networkd-watcher.path"
+SYSTEMD_SERVICE:${PN} += "systemd-networkd-watcher.path"
 
 SRC_URI               += "                                                            \
                            file://systemd-networkd-watcher.service                    \
                            file://systemd-networkd-watcher.path                       \
                          "
-FILES_${PN}            = "                                                            \
+FILES:${PN}            = "                                                            \
                            ${systemd_unitdir}/system/systemd-networkd-watcher.service \
                            ${systemd_unitdir}/system/systemd-networkd-watcher.path    \
                          "
 
-do_install_append() {
+do_install:append() {
     install -d                                                  ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/systemd-networkd-watcher.service ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/systemd-networkd-watcher.path    ${D}${systemd_unitdir}/system
