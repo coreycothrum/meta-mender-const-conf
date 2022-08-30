@@ -14,6 +14,9 @@ MENDER/CONST_CONF_SSH__CONF_SYS__DIR     ?= "${localstatedir}/run/ssh"
 MENDER/CONST_CONF_SSHD_CONF_SYS__DIR     ?= "${localstatedir}/run/sshd"
 
 ################################################################################
+MENDER/CONST_CONF_JOURNALD_LOG_SYS__DIR  ?= "${localstatedir}/log/journal"
+MENDER/CONST_CONF_JOURNALD_LOG_DATA_DIR  ?= "${MENDER_DATA_PART_MOUNT_LOCATION}/log/journal"
+################################################################################
 #FIXME - this should be in mender-core
 MENDER_DATA_PART_MOUNT_LOCATION           = "/data"
 ################################################################################

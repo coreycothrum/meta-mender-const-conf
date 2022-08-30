@@ -25,6 +25,9 @@ This directory is mounted/merged (overlayfs) at ``/etc/systemd/network``, allowi
 
 When one of the systemd.network files change, ``systemd-networkd-watcher.service`` restarts ``systemd-networkd`` via ``systemctl`` to apply changes.
 
+### systemd-journald
+``/var/log/journal`` is symlinked to ``MENDER/CONST_CONF_JOURNALD_LOG_DATA_DIR``. This allows journald logs to persist boots (via the ``/data`` partition).
+
 #### Install Custom Network Device Configuration
 This layer only installs ``zdefault.network``, a catchall that sets the interface to unmanaged. This is so unused interfaces do not cause systemd to report failed services.
 
