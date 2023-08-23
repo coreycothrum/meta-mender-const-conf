@@ -1,7 +1,7 @@
 [Unit]
 Description=SSL key(s) generator
-Requires=local-fs.target
-After=local-fs.target
+Requires=data.mount local-fs.target
+After=data.mount local-fs.target
 Before=network.target
 
 [Service]

@@ -1,6 +1,7 @@
 [Unit]
 Description=update systemd-networkd from /data
-Requires=systemd-networkd.service
+After=data.mount
+Requires=data.mount systemd-networkd.service
 
 [Service]
 Type=oneshot

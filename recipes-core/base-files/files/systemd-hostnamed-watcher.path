@@ -1,3 +1,7 @@
+[Unit]
+After=data.mount
+Requires=data.mount
+
 [Path]
 PathChanged=@@MENDER/CONST_CONF_HOSTNAME_CONF_DATA_DIR@@
 MakeDirectory=True

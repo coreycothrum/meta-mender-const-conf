@@ -1,6 +1,7 @@
 [Unit]
 Description=update hostname from /data
-Requires=systemd-hostnamed.service
+After=data.mount
+Requires=data.mount systemd-hostnamed.service
 
 [Service]
 Type=oneshot
