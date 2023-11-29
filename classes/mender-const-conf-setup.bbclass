@@ -1,4 +1,5 @@
-EXTRA_IMAGE_FEATURES:append = " read-only-rootfs"
+EXTRA_IMAGE_FEATURES:append   = " read-only-rootfs"
+MENDER_FEATURES_ENABLE:append = " mender-persist-systemd-machine-id"
 
 python do_mender_const_conf_checks() {
   if not bb.utils.contains('DISTRO_FEATURES', 'systemd', True, False, d):
