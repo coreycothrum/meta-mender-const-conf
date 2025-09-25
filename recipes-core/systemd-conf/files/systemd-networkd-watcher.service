@@ -5,7 +5,8 @@ Requires=data.mount systemd-networkd.service
 
 [Service]
 Type=oneshot
-ExecStartPre=-@@base_bindir@@/mount -o remount,ro @@sysconfdir@@/systemd/network
+ExecStartPre=-@@base_bindir@@/umount --force    @@sysconfdir@@/systemd/network
+ExecStartPre=@@base_bindir@@/mount   --onlyonce @@sysconfdir@@/systemd/network
 ExecStart=@@base_bindir@@/networkctl reload
 
 [Install]
