@@ -1,0 +1,11 @@
+[Unit]
+Description=update rsyslogd from /data
+After=data.mount rsyslog.service
+Requires=data.mount
+
+[Service]
+Type=oneshot
+ExecStart=@@base_bindir@@/systemctl restart rsyslog
+
+[Install]
+WantedBy=multi-user.target

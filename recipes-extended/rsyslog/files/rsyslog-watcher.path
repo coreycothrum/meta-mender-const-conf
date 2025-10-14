@@ -1,0 +1,10 @@
+[Unit]
+After=data.mount rsyslog.service
+Requires=data.mount
+
+[Path]
+PathModified=@@MENDER/CONST_CONF_RSYSLOG_CONF_DATA_DIR@@
+MakeDirectory=True
+
+[Install]
+WantedBy=multi-user.target
