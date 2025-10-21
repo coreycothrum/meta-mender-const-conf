@@ -1,5 +1,5 @@
 [Unit]
-After=data.mount rsyslog.service
+After=data.mount
 Requires=data.mount
 
 [Path]
