@@ -8,7 +8,7 @@ SRC_URI += "                         \
   file://include_const_data_dir.conf \
 "
 
-RDEPENDS:${PN} = "rsyslog-watcher"
+RDEPENDS:${PN} += "rsyslog-watcher"
 
 inherit bitbake-variable-substitution-helpers
 
