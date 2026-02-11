@@ -1,0 +1,11 @@
+[Unit]
+Description=load archived Docker images from .tar file(s)
+Requires=docker.service containerd.service
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=@@bindir@@/find "@@MENDER/CONST_CONF_DOCKER_IMG_DATA_DIR@@" -type f -iname "*.tar" -exec @@bindir@@/docker load --input "{}" \;
+
+[Install]
+WantedBy=multi-user.target
