@@ -1,8 +1,12 @@
 ################################################################################
-MENDER/CONST_CONF_DOCKER_IMG_DATA_DIR   ?= "${MENDER_DATA_PART_MOUNT_LOCATION}/conf.d/docker/images"
-MENDER/CONST_CONF_HOSTNAME_CONF_DATA_DIR ?= "${MENDER_DATA_PART_MOUNT_LOCATION}/conf.d/hostnamed"
-MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR  ?= "${MENDER_DATA_PART_MOUNT_LOCATION}/conf.d/networkd"
-MENDER/CONST_CONF_RSYSLOG_CONF_DATA_DIR  ?= "${MENDER_DATA_PART_MOUNT_LOCATION}/conf.d/rsyslog"
+MENDER/CONST_CONF_DATA_DIR               ?= "${MENDER_DATA_PART_MOUNT_LOCATION}/conf.d"
+MENDER/CONST_CONF_DOCKER_CONF_DATA_DIR   ?= "${MENDER/CONST_CONF_DATA_DIR}/docker"
+MENDER/CONST_CONF_HOSTNAME_CONF_DATA_DIR ?= "${MENDER/CONST_CONF_DATA_DIR}/hostnamed"
+MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR  ?= "${MENDER/CONST_CONF_DATA_DIR}/networkd"
+MENDER/CONST_CONF_RSYSLOG_CONF_DATA_DIR  ?= "${MENDER/CONST_CONF_DATA_DIR}/rsyslog"
+
+################################################################################
+MENDER/CONST_CONF_DOCKER_IMG_DATA_DIR    ?= "${MENDER/CONST_CONF_DOCKER_CONF_DATA_DIR}/images"
 
 ################################################################################
 MENDER/CONST_CONF_SSL_CONF_DATA_DIR      ?= "${MENDER_DATA_PART_MOUNT_LOCATION}/ssl"
