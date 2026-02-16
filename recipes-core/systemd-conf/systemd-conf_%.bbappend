@@ -2,17 +2,18 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 RDEPENDS:${PN} += "systemd-networkd-watcher"
 
-SRC_URI     += "                                                              \
-                 file://network/                                              \
-                 file://systemd-tmpfiles-setup.service.conf                   \
-                 file://systemd-networkd.service.conf                         \
-               "
-FILES:${PN} += "                                                              \
-                 ${MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR}                   \
-                 ${sysconfdir}/systemd/network/*                              \
-                 ${systemd_unitdir}/system/systemd-tmpfiles-setup.service.d/* \
-                 ${systemd_unitdir}/system/systemd-networkd.service.d/*       \
-               "
+SRC_URI += " \
+  file://systemd-tmpfiles-setup.service.conf \
+  file://systemd-networkd.service.conf \
+"
+FILES:${PN} += " \
+  ${MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR} \
+  ${sysconfdir}/systemd/network/* \
+  ${systemd_unitdir}/system/systemd-tmpfiles-setup.service.d/* \
+  ${systemd_unitdir}/system/systemd-networkd.service.d/* \
+"
+
+PACKAGECONFIG = "dhcp-ethernet"
 
 inherit bitbake-variable-substitution
 
@@ -25,5 +26,4 @@ do_install:append() {
 
     install -d                                                     ${D}${MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR}/
     install -d                                                     ${D}${sysconfdir}/systemd/network/
-    install -m 0644 ${WORKDIR}/network/*.network                   ${D}${sysconfdir}/systemd/network/
 }

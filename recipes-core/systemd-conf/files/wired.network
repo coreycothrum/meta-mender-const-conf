@@ -3,7 +3,16 @@
 [Match]
 Name=*
 KernelCommandLine=!nfsroot
+KernelCommandLine=!ip
 
 [Link]
 Unmanaged=yes
 RequiredForOnline=no
+
+[Network]
+DHCP=yes
+
+[DHCP]
+UseMTU=yes
+RouteMetric=10
+ClientIdentifier=mac
