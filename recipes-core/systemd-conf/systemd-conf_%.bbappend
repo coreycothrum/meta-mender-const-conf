@@ -8,6 +8,7 @@ SRC_URI += " \
 "
 FILES:${PN} += " \
   ${MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR} \
+  ${sysconfdir}/systemd/ \
   ${sysconfdir}/systemd/network/* \
   ${systemd_unitdir}/system/systemd-tmpfiles-setup.service.d/* \
   ${systemd_unitdir}/system/systemd-networkd.service.d/* \
