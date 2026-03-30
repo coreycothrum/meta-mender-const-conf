@@ -1,10 +1,13 @@
 [Unit]
 Description=load archived Docker images from .tar file(s)
-Requires=docker.service containerd.service
+Requires=docker.service
 After=docker.service
 
 [Service]
 Type=oneshot
+RemainAfterExit=no
+
+ExecStartPre=@@bindir@@/docker container prune --force
 ExecStartPre=@@bindir@@/docker image prune --all --force
 ExecStart=@@bindir@@/find "@@MENDER/CONST_CONF_DOCKER_IMG_DATA_DIR@@" -type f -iname "*.tar" -exec @@bindir@@/docker load --input "{}" \;
 
