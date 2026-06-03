@@ -6,6 +6,7 @@ After=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=no
+Restart=on-failure
 
 ExecStartPre=@@bindir@@/docker container prune --force
 ExecStartPre=@@bindir@@/docker image prune --all --force
