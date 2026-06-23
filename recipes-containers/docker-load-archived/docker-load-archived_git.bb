@@ -17,6 +17,7 @@ FILES:${PN} += " \
   ${systemd_unitdir}/system/${BPN}.service \
   ${systemd_unitdir}/system/${BPN}.path \
 "
+S = "${UNPACKDIR}"
 
 RDEPENDS:${PN} += " \
   bash \
@@ -27,9 +28,9 @@ inherit bitbake-variable-substitution-helpers
 inherit systemd
 
 do_install:append() {
-  install -d                              ${D}${systemd_unitdir}/system/
-  install    -m 0644 ${WORKDIR}/*.service ${D}${systemd_unitdir}/system/
-  install    -m 0644 ${WORKDIR}/*.path    ${D}${systemd_unitdir}/system/
+  install -d                        ${D}${systemd_unitdir}/system/
+  install    -m 0644 ${S}/*.service ${D}${systemd_unitdir}/system/
+  install    -m 0644 ${S}/*.path    ${D}${systemd_unitdir}/system/
 
   ${@bitbake_variables_search_and_sub("${D}${systemd_unitdir}/system/", r"${BITBAKE_VAR_SUB_DELIM}", d)}
 }

@@ -19,12 +19,12 @@ PACKAGECONFIG = "dhcp-ethernet"
 inherit bitbake-variable-substitution
 
 do_install:append() {
-    install -d                                                     ${D}${systemd_unitdir}/system/systemd-tmpfiles-setup.service.d/
-    install -m 0644 ${WORKDIR}/systemd-tmpfiles-setup.service.conf ${D}${systemd_unitdir}/system/systemd-tmpfiles-setup.service.d/
+    install -d                                                       ${D}${systemd_unitdir}/system/systemd-tmpfiles-setup.service.d/
+    install -m 0644 ${UNPACKDIR}/systemd-tmpfiles-setup.service.conf ${D}${systemd_unitdir}/system/systemd-tmpfiles-setup.service.d/
 
-    install -d                                                     ${D}${systemd_unitdir}/system/systemd-networkd.service.d/
-    install -m 0644 ${WORKDIR}/systemd-networkd.service.conf       ${D}${systemd_unitdir}/system/systemd-networkd.service.d/
+    install -d                                                       ${D}${systemd_unitdir}/system/systemd-networkd.service.d/
+    install -m 0644 ${UNPACKDIR}/systemd-networkd.service.conf       ${D}${systemd_unitdir}/system/systemd-networkd.service.d/
 
-    install -d                                                     ${D}${MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR}/
-    install -d                                                     ${D}${sysconfdir}/systemd/network/
+    install -d ${D}${MENDER/CONST_CONF_NETWORK_CONF_DATA_DIR}/
+    install -d ${D}${sysconfdir}/systemd/network/
 }

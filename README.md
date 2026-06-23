@@ -33,8 +33,8 @@ This layer only installs ``zdefault.network``, a catchall that sets the interfac
 
 To add custom systemd.network files, append ``systemd-conf_%.bbappend`` to extend ``FILESEXTRAPATHS:prepend``. They are expected to be located at:
 
-    ${WORKDIR}/network/*.network
-    ${WORKDIR}/network/${MACHINE}/*.network
+    ${UNPACKDIR}/network/*.network
+    ${UNPACKDIR}/network/${MACHINE}/*.network
 
 Any found will be added automatically.
 
