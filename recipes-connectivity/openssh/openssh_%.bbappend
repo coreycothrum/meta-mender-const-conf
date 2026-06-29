@@ -13,6 +13,9 @@ FILES:${PN} += " \
 
 inherit bitbake-variable-substitution-helpers
 
+
+PACKAGECONFIG += "hostkey-rsa"
+
 do_install:append() {
     install -d                                  ${D}${sbindir}/
     install -m 0755 ${UNPACKDIR}/sshddelkeys.sh ${D}${sbindir}/
